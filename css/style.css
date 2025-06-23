@@ -1,0 +1,70 @@
+/* ใช้ฟอนต์ Sarabun สำหรับภาษาไทย */
+body {
+    font-family: 'Sarabun', sans-serif;
+    background-color: #ffffff; /* 1. เปลี่ยนพื้นหลังหลักเป็นสีขาว */
+}
+/* 2. เพิ่ม scrolling effect แบบนุ่มนวลเมื่อกดลิงก์ใน Nav Bar */
+html {
+    scroll-behavior: smooth;
+}
+
+/* 3. แก้ปัญหาเมนู Sticky บัง Section เมื่อกดลิงก์ */
+section[id] {
+    scroll-margin-top: 5rem; /* 80px - สามารถปรับค่านี้ให้พอดีกับความสูงของ Header ได้ */
+}
+
+/* คลาสสำหรับบังคับสัดส่วนรูปภาพ และทำให้รู้ว่าคลิกได้ */
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0.75rem; /* 12px */
+    cursor: pointer; /* 3. เปลี่ยน cursor เป็นรูปมือเมื่อชี้ */
+}
+
+/* --- 4. CSS สำหรับ Modal แสดงรูปภาพ (Lightbox) --- */
+#image-modal {
+    display: none; /* ซ่อนไว้เป็นค่าเริ่มต้น */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.8); /* พื้นหลังสีดำโปร่งแสง */
+    backdrop-filter: blur(5px); /* ทำให้พื้นหลังเบลอ */
+    -webkit-backdrop-filter: blur(5px);
+    align-items: center; /* จัดให้อยู่กึ่งกลางแนวตั้ง */
+    justify-content: center; /* จัดให้อยู่กึ่งกลางแนวนอน */
+}
+#image-modal-content {
+    margin: auto;
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 80vw; /* ขนาดรูปภาพสูงสุด 80% ของความกว้างจอ */
+    max-height: 85vh; /* ขนาดรูปภาพสูงสุด 85% ของความสูงจอ */
+    border-radius: 0.5rem;
+}
+#modal-close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+/* --- 5. CSS สำหรับเอฟเฟกต์เมื่อเลื่อนหน้าเว็บ (Animate on Scroll) --- */
+.scroll-animate {
+    opacity: 0;
+    transform: translateY(0);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.scroll-animate.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
